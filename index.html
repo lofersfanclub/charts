@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/loaders.min.css">
+  <style>
+  #loader{
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+  }
+
+  .loader-inner{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate('-50% -50%');
+  }
+
+  .ball-triangle-path>div {
+    background-color: #f0f0f0;
+  }
+  </style>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <div id="loader">
+  <div class="loader-inner">
+    <div class="ball-triangle-path">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript">
+  document.window.onload(function(){
+     document.getElementById('loader').style.diplay = "none";
+});
+
+  </script>
+
+<canvas id="splits"></canvas>
+
+
+
+
+
+
+<script src="js/Chart.js"></script>
+<script>
+  var ctx = document.getElementById("splits").getContext('2d');
+
+  var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
+  gradientFill.addColorStop(0, "rgba(132,250,176,0.6)");
+  gradientFill.addColorStop(1, "rgba(143,211,244,0.6)");
+
+  var myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ["January", "February", "March", "April", "May", "June", "July"],
+        datasets: [{
+            label: "My First dataset",
+            backgroundColor: gradientFill,
+            borderColor: gradientFill,
+            data: [0, 10, 5, 2, 20, 30, 45],
+            pointRadius: 0,
+            borderWidth: 1,
+            lineTension: 0.4,
+        }]
+      },
+      options: {
+        legend: {
+        position: "bottom",
+          labels: {
+            fontColor: '#fff',
+            fontSize: 18,
+          },
+
+        },
+        animation: {
+        easing: "easeInOutBack"
+      },
+        scales: {
+          yAxes: [{
+                ticks: {
+                    fontColor: "rgba(0,0,0,0.5)",
+                    fontStyle: "bold",
+                    beginAtZero: true,
+                    maxTicksLimit: 5,
+                    padding: 5
+                },
+                gridLines: {
+                    drawTicks: false,
+                    display: false
+                }
+            }],
+            xAxes: [{
+                  ticks: {
+                      fontColor: "rgba(0,0,0,0.5)",
+                      fontStyle: "bold",
+                      beginAtZero: true,
+                      maxTicksLimit: 5,
+                      padding: 5
+                  },
+                  gridLines: {
+                      drawTicks: false,
+                      display: false
+                  }
+              }]
+        }
+      }
+  });
+
+
+
+
+</script>
+
+</body>
+</html>
